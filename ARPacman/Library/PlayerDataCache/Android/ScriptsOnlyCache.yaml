@@ -39,7 +39,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 16328}
+      Script: {instanceID: 11498}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -163,6 +163,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: aee825c9b32d94b10b6918800177bc63
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: webCamScript
   - hash:
       serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
@@ -469,12 +475,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: aee825c9b32d94b10b6918800177bc63
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: webCamScript
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainScene.unity
