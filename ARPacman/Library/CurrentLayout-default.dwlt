@@ -450,7 +450,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 3}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -529,9 +529,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: ea2c0000
       m_LastClickedID: 0
-      m_ExpandedIDs: b0eaffffc8eaffffd0eaffffecebffff04ecffffacecffffaaefffffc2efffff6af0ffff06f1ffff1ef1ffffcaf1ffff78f2ffff90f2ffff38f3ffff1af6ffff32f6ffffdaf6ffff72fbffff40330000a835000062370000fa370000
+      m_ExpandedIDs: ceeaffffe6eaffffeeeaffffbcf1ffffd4f1ffffdcf1ffffb0f2ffffc8f2ffff70f3ffff02f5ffff1af5ffffc2f5ffff72fbffff40330000f2350000e6360000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -591,9 +591,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -21.661543, y: -13.534117, z: 22.60579}
+    m_Target: {x: 3.1311116, y: 0.8585416, z: -8.218018}
     speed: 2
-    m_Value: {x: -21.661543, y: -13.534117, z: 22.60579}
+    m_Value: {x: 3.1311116, y: 0.8585416, z: -8.218018}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -631,28 +631,28 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0, y: 0}
+      m_Size: {x: 1, y: 1}
     m_ShowGrid: 1
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.20425461, y: 0.2794713, z: -0.060973946, w: -0.93619347}
+    m_Target: {x: 0.10786298, y: -0.12196343, z: 0.013334315, w: 0.9865739}
     speed: 2
-    m_Value: {x: -0.20416293, y: 0.2808753, z: -0.061280258, w: -0.9357732}
+    m_Value: {x: 0.10786216, y: -0.121962495, z: 0.013334214, w: 0.98656636}
   m_Size:
-    m_Target: 54.176254
+    m_Target: 17.952644
     speed: 2
-    m_Value: 54.176254
+    m_Value: 17.952644
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 1
-    m_SpeedNormalized: 0.5
+    m_SpeedNormalized: 0.49748743
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -663,8 +663,8 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
-  m_LastSceneViewOrtho: 0
+  m_LastSceneViewRotation: {x: 0.07131947, y: -0.0224408, z: 0.0016045165, w: 0.9972011}
+  m_LastSceneViewOrtho: 1
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
@@ -728,7 +728,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1

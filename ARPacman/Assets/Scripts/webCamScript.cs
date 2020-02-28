@@ -8,9 +8,12 @@ public class webCamScript : MonoBehaviour
 {
     public GameObject webCameraPlane;
 
+    private LocationService locationService;
+
     // Start is called before the first frame update
     void Start()
     {
+        locationService = new LocationService();
         if (Application.isMobilePlatform)
         {
             GameObject cameraParent = new GameObject("camParent");
