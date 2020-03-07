@@ -39,16 +39,18 @@ public class NewBehaviourScript : MonoBehaviour
     }
 
     //Checks if the Ghost overlaps with player while it's vulnerable
-    public static bool CheckIsAlive()
+    public bool CheckIsAlive()
     {
         if (vulnerable && ((ghost_X < player_X + 0.5 && ghost_X > player_X - 0.5) && (ghost_Y < player_Y + 0.5 && ghost_Y > player_Y - 0.5)))
         {
             isAlive = false;
         }
+
+        return isAlive;
     }
 
     //Will find the shortest path to its home and reset itself
-    public static void returnHome()
+    public void returnHome()
     {
         /*
          Shortest path logic goes here

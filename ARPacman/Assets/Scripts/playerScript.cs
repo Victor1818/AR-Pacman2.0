@@ -47,12 +47,14 @@ public class PlayerScript : MonoBehaviour
     }
 
     //Checks if the Player overlaps with Ghost wlile it's not powered
-    public static bool CheckIsAlive()
+    public bool CheckIsAlive()
     {
         if(!powered && ((player_X < ghost_X+0.5 && player_X > ghost_X-0.5) && (player_Y < ghost_Y + 0.5 && player_Y > ghost_Y - 0.5)))
         {
             isAlive = false;
         }
+
+        return isAlive;
     }
 
 }
