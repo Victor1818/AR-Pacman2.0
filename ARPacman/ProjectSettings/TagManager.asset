@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IgnorePhysicsCollision
   - IgnoreGhostPhysicsCollision
+  - Wall
   layers:
   - Default
   - TransparentFX
