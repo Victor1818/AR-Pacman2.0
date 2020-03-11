@@ -5,56 +5,93 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public bool isAlive = true;
-    public double player_X = 0;
-    public double player_Y = 0;
-    public bool powered = false;
-    public int speed = 4;
-    public int lives = 3;
+    public enum Direction { FORWARD, LEFT, BACKWARD, RIGHT, NONE }
+
+    public bool alive;
+    public Vector3 spawn;
+    public bool powered;
+    public float speed;
+    public int lives;
+
+    private Direction direction;
 
     // Start is called before the first frame update
     void Start()
     {
-        isAlive = true;
-        player_X = 5;
-        player_Y = 5;
+        alive = true;
         powered = false;
-        speed = 4;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckIsAlive();
-        if (!isAlive)
+        if (lives != -1)
         {
-            lives--;
-            if (lives == 0)
+            if (Input.gyro.enabled)
             {
-                print("Game Over!");
+                float angle = Input.gyro.attitude.eulerAngles.y;
+                if (angle <= 45 || angle >= 315)
+                {
+                    direction = Direction.FORWARD;
+                }
+                else if (angle > 45 && angle < 135)
+                {
+                    direction = Direction.LEFT;
+                }
+                else if (angle >= 135 && angle <= 225)
+                {
+                    direction = Direction.BACKWARD;
+                }
+                else
+                {
+                    direction = Direction.RIGHT;
+                }
             }
-            else
+            if (direction == Direction.FORWARD)
             {
-                Start();
+                GetComponent<Rigidbody>().velocity = Vector3.forward * speed;
+                Debug.Log("ARPACMAN: direction: FORWARD");
+            }
+            else if (direction == Direction.RIGHT)
+            {
+                GetComponent<Rigidbody>().velocity = Vector3.right * speed;
+                Debug.Log("ARPACMAN: direction: RIGHT");
+            }
+            else if (direction == Direction.BACKWARD)
+            {
+                GetComponent<Rigidbody>().velocity = Vector3.back * speed;
+                Debug.Log("ARPACMAN: direction: BACKWARD");
+            }
+            else if (direction == Direction.LEFT)
+            {
+                GetComponent<Rigidbody>().velocity = Vector3.left * speed;
+                Debug.Log("ARPACMAN: direction: LEFT");
             }
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        
-    }
-
-    //Checks if the Player overlaps with Ghost wlile it's not powered
-    public bool CheckIsAlive()
-    {
-        if(!powered && ((player_X < ghost_X+0.5 && player_X > ghost_X-0.5) && (player_Y < ghost_Y + 0.5 && player_Y > ghost_Y - 0.5)))
+        if (collision.gameObject.CompareTag("IgnorePhysicsCollision"))
         {
-            isAlive = false;
+            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+            if (collision.gameObject.GetComponent<NewBehaviourScript>())
+            {
+                NewBehaviourScript ghost = collision.gameObject.GetComponent<NewBehaviourScript>();
+                if (ghost.isAlive)
+                {
+                    if (powered)
+                    {
+                        ghost.isAlive = false;
+                        //Change to dead ghost material
+                    }
+                    else
+                    {
+                        lives--;
+                        transform.position = spawn;
+                    }
+                }
+            }
         }
-
-        return isAlive;
     }
-
 }

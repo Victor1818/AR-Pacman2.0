@@ -41,10 +41,10 @@ public class NewBehaviourScript : MonoBehaviour
     //Checks if the Ghost overlaps with player while it's vulnerable
     public bool CheckIsAlive()
     {
-        if (vulnerable && ((ghost_X < player_X + 0.5 && ghost_X > player_X - 0.5) && (ghost_Y < player_Y + 0.5 && ghost_Y > player_Y - 0.5)))
-        {
-            isAlive = false;
-        }
+        //if (vulnerable && ((ghost_X < player_X + 0.5 && ghost_X > player_X - 0.5) && (ghost_Y < player_Y + 0.5 && ghost_Y > player_Y - 0.5)))
+        //{
+        //    isAlive = false;
+        //}
 
         return isAlive;
     }
