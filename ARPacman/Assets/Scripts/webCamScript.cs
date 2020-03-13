@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WebCamScript : MonoBehaviour
+public class webCamScript : MonoBehaviour
 {
     public GameObject webCameraPlane;
+
+    public Gyroscope gyro;
 
     // Start is called before the first frame update
     void Start()
     {
+        gyro = Input.gyro;
         if (Application.isMobilePlatform)
         {
             GameObject cameraParent = new GameObject("camParent");
@@ -18,7 +21,7 @@ public class WebCamScript : MonoBehaviour
             transform.parent = cameraParent.transform;
             cameraParent.transform.Rotate(Vector3.right, 90f);
         }
-        Input.gyro.enabled = true;
+        gyro.enabled = true;
         WebCamTexture webCamTexture = new WebCamTexture();
         webCameraPlane.GetComponent<MeshRenderer>().material.mainTexture = webCamTexture;
         webCamTexture.Play();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerScript : MonoBehaviour
+public class playerScript : MonoBehaviour
 {
     public enum Direction { FORWARD, LEFT, BACKWARD, RIGHT, NONE }
 
@@ -12,7 +12,9 @@ public class PlayerScript : MonoBehaviour
     public bool powered;
     public float speed;
     public int lives;
+    public int score;
 
+    private webCamScript wCScript;
     private Direction direction;
 
     // Start is called before the first frame update
@@ -20,16 +22,18 @@ public class PlayerScript : MonoBehaviour
     {
         alive = true;
         powered = false;
+        wCScript = GetComponentInChildren<webCamScript>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        Debug.Log(GetComponent<Rigidbody>().velocity.ToString());
         if (lives != -1)
         {
-            if (Input.gyro.enabled)
+            if (wCScript.gyro.enabled)
             {
-                float angle = Input.gyro.attitude.eulerAngles.y;
+                float angle = wCScript.gyro.attitude.eulerAngles.y;
                 if (angle <= 45 || angle >= 315)
                 {
                     direction = Direction.FORWARD;
@@ -42,7 +46,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     direction = Direction.BACKWARD;
                 }
-                else
+                else if (angle > 225 && angle < 315)
                 {
                     direction = Direction.RIGHT;
                 }
@@ -68,6 +72,11 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log("ARPACMAN: direction: LEFT");
             }
         }
+        else
+        {
+            alive = false;
+        }
+        Debug.Log(GetComponent<Rigidbody>().velocity.ToString());
     }
 
     void OnCollisionEnter(Collision collision)
@@ -75,14 +84,15 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("IgnorePhysicsCollision"))
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
-            if (collision.gameObject.GetComponent<NewBehaviourScript>())
+            if (collision.gameObject.GetComponent<ghostScript>())
             {
-                NewBehaviourScript ghost = collision.gameObject.GetComponent<NewBehaviourScript>();
-                if (ghost.isAlive)
+                ghostScript g = collision.gameObject.GetComponent<ghostScript>();
+                if (g.alive)
                 {
                     if (powered)
                     {
-                        ghost.isAlive = false;
+                        score += 200;
+                        g.alive = false;
                         //Change to dead ghost material
                     }
                     else
@@ -92,6 +102,24 @@ public class PlayerScript : MonoBehaviour
                     }
                 }
             }
+            else if (collision.gameObject.GetComponent<pelletScript>())
+            {
+                pelletScript p = collision.gameObject.GetComponent<pelletScript>();
+                if (p.powerPellet)
+                {
+                    score += 50;
+                }
+                else
+                {
+                    score += 10;
+                }
+                Destroy(collision.gameObject);
+            }
+        }
+        else if (collision.gameObject.CompareTag("StageWrap"))
+        {
+            transform.position = new Vector3((collision.gameObject.transform.position.x < 0 ? collision.gameObject.transform.position.x + 1 : collision.gameObject.transform.position.x - 1) * -1,
+                0, transform.position.z);
         }
     }
 }
